@@ -26,7 +26,7 @@ public class Client01 {
     /*构造方法*/
     public Client01(){
         try {
-            socket= new Socket("192.168.1.7",8009);
+            socket= new Socket("172.20.10.4",8009);
             //返回此套接字的输入流。
             in= socket.getInputStream();
         }catch (Exception e){
@@ -86,7 +86,7 @@ public class Client01 {
             //获取socket中的保存的信息
             int length= socket.getInputStream().read(ss);
             for (int i=0;i<ss.length;i++){
-                System.out.print(ss[i]);
+                System.out.print("服务器传来的信息："+ss[i]);
             }
         }catch (Exception e){
             e.printStackTrace();

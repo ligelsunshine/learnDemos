@@ -1,9 +1,6 @@
 package com.ligel.server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -20,10 +17,13 @@ import java.util.List;
 public class Server {
     //保存连接的用户
     private List<ThreadServer> clients=new ArrayList<ThreadServer>();
+
     //内部类
     public  class ThreadServer implements Runnable {
         private Socket socket;
         private BufferedReader br;
+        private  List<OutputStream> outs= new ArrayList<OutputStream>();
+        //保存了输出流
         private PrintWriter out;
         private String name;
         private Boolean flag = true;
@@ -31,6 +31,7 @@ public class Server {
         public ThreadServer(Socket socket) throws IOException {
             this.socket = socket;
             //输入缓存
+            outs.add(socket.getOutputStream());
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
             String str = br.readLine();
@@ -42,6 +43,15 @@ public class Server {
         }
 
         private void send(String message) {
+//            outs.forEach(out->{
+//                System.out.println("-->已向线程" +01 + "发送消息");
+//                byte[] bytes = message.getBytes();
+//                try {
+//                    out.write(bytes);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            });
             for (ThreadServer threadServer : clients) {
                 System.out.println("-->已向线程" + threadServer.name + "发送消息");
                 threadServer.out.print(message);
@@ -71,12 +81,6 @@ public class Server {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }

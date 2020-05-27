@@ -43,6 +43,5 @@ public class SocketLearn {
 //          /*这段代码是会报错的，因为没有服务器监听指定的端口，相当于这里缺少了服务器Server*/
             e.printStackTrace();
         }
-
     }
 }

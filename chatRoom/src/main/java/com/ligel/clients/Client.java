@@ -26,7 +26,7 @@ public class Client implements com.ligel.interfaces.Client {
     /*构造方法*/
     public Client(){
         try {
-            socket= new Socket("192.168.1.7",8009);
+            socket= new Socket("192.168.1.138",8009);
             //设置连接时限，在一分钟以内，不然就报错：SocketTimeoutException
 //            SocketAddress socketAddress= new InetSocketAddress("192.168.1.138",5001);
 //            socket.connect(socketAddress);
@@ -89,6 +89,7 @@ public class Client implements com.ligel.interfaces.Client {
             byte ss[]= new byte[1024];
             //获取socket中的保存的信息
             int length= socket.getInputStream().read(ss);
+            System.out.println("收到信息："+length);
 
         }catch (Exception e){
             e.printStackTrace();

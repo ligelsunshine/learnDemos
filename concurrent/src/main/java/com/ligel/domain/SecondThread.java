@@ -8,5 +8,9 @@ package com.ligel.domain;
  * @Author: LIGEL
  * @Date: 2020/5/24 12:41
  */
-public class SecondThread {
+public class SecondThread implements Runnable {
+    @Override
+    public void run() {
+        System.out.println(" this is my another second thread!");
+    }
 }

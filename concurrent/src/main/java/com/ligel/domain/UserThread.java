@@ -8,5 +8,9 @@ package com.ligel.domain;
  * @Author: LIGEL
  * @Date: 2020/5/24 12:35
  */
-public class UserThread {
+public class UserThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("this is myThread! ");
+    }
 }

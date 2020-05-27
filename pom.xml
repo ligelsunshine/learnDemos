@@ -8,6 +8,11 @@
         <module>disignPattern</module>
         <module>six_designRule</module>
         <module>ArgorithmAndDataStruct</module>
+        <module>concurrent</module>
+        <module>Lambda</module>
+        <module>java_I/O</module>
+        <module>java_IO</module>
+        <module>socketLearn</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,12 +40,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
         </dependency>
     </dependencies>
 
